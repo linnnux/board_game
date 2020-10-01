@@ -1,0 +1,21 @@
+body
+{
+  background-color: #EEE;
+}
+
+
+
+table, th, td
+{
+  border: 1px solid black;
+  overflow-x:auto;
+
+}
+
+th, td
+{
+  border-bottom: 1px solid #ddd;
+  width:5em;
+  height: 5em;
+  overflow-x:auto;
+}
