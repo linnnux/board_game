@@ -16,7 +16,7 @@ class Board
 {
 
 
-    constructor(heigt,width,body)
+    constructor(body)
     {
       // get the reference for the body
 
@@ -24,14 +24,14 @@ class Board
       var tbl     = document.createElement("table");
       var tblBody = document.createElement("tbody");
 
-      this._x = heigt;
-      this._y = width;
+      this._maxLenght = 10;
+      this._minLenght = 5;
+
+      this._x = Math.floor(Math.random() * this._maxLenght)+this._minLenght;;
+      this._y = Math.floor(Math.random() * this._maxLenght)+this._minLenght;;
 
 
       // creating all cells
-
-
-
 
       for (var i = 0; i < this._x; i++)
       {
@@ -64,8 +64,6 @@ class Board
           console.log("erreur création tableau");
         }
 
-
-
         // put the <tbody> in the <table>
         tbl.appendChild(tblBody);
 
@@ -86,6 +84,15 @@ class Board
     get height()
     {
       return this._x;
+    }
+
+    set maxLenght(maxLenght)
+    {
+      this._maxLenght = maxLenght;
+    }
+    get maxLenght()
+    {
+      return this._maxLenght;
     }
 
 
