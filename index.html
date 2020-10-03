@@ -1,53 +1,27 @@
 <!DOCTYPE html>
 <html>
-<title>jeu de plateau tour par tour en JS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href = "css/main.css"  rel  = "stylesheet"/>
-<body>
+    <head>
+        <title>jeu de plateau tour par tour en JS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href = "css/main.css"  rel  = "stylesheet"/>
+        <script src='js/main.js'></script>
+    </head>
 
-<div class="w3-container w3-center">
-  <h1>jeu de plateau tour par tour en JS</h1>
+    <body>
 
-  <div class="w3-container w3-center w3-white">
-        <table id="plateau" class="w3-center">
-          <tr>
-            <td id="t1">1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-          </tr>
+      <div class="w3-container w3-center">
+        <h1>jeu de plateau tour par tour en JS</h1>
+        <input type="button" value="Generate a table." onclick="generate_table()">
 
-        </table>
-</div>
-</div>
+        <div class="w3-container w3-center w3-white">
+              <table id="table" class="w3-center">
 
-</body>
+              </table>
+        </div>
+
+        <input type="button" value="Set paragraph background color" onclick="set_background()">
+      </div>
+
+    </body>
 </html>
-
-<script>
-document.getElementById("plateau").innerHTML += '  <tr><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td></tr>';
-document.getElementById("t1").style.background = "grey";
-</script>
