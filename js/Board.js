@@ -27,7 +27,7 @@ class Board
       // longueur x tab
       this._xTableLength = 0;
       // longueur y tab
-      this._xTableLength = 0
+      this._xTableLength = 0;
 
       // générer un tableau (plateau)
       this.generateTable(body);
@@ -38,6 +38,7 @@ class Board
     {
       // creates a <table> element and a <tbody> element
       var tbl     = document.createElement("table");
+      tbl.setAttribute("class","w3-col w3-light-green w3-center");
       var tblBody = document.createElement("tbody");
 
       // générer les tailles du plateau entre le max et le minim défini
@@ -179,5 +180,17 @@ class Board
       return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
 
-    
+    // longueur x tab
+    get xTableLength()
+    {
+        return this._xTableLength;
+    }
+
+    // longueur y tab
+    get yTableLength()
+    {
+        return this._yTableLength;
+    }
+
+
 }
