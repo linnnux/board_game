@@ -64,6 +64,7 @@ class Board
             var cellText = document.createTextNode("row "+i+", column "+j);
             cell.setAttribute("x", i);
             cell.setAttribute("y", j);
+            cell.setAttribute("available", true);
             cell.appendChild(cellText);
             row.appendChild(cell);
 
@@ -93,9 +94,8 @@ class Board
     /*
       Cette fonction génère les cases inaccessibles
     */
-    setBackground(body,color,nbCase)
+    generateNoAvailableCases(body, color, nbCase)
     {
-
       if (nbCase > this._xTableLength || nbCase > this._yTableLength)
       {
         nbcase = this._xTableLength;
@@ -105,11 +105,10 @@ class Board
       {
         for(let i=0;i< nbCase; i++)
         {
-
           this._randomX = this.getRndInteger(0, this._xTableLength);
           this._randomY = this.getRndInteger(0, this._yTableLength);
 
-          this.setCase(body, this._randomX, this._randomY, color);
+          this.setCase(body, this._randomX, this._randomY, color, false);
         }
       }
       catch (e)
@@ -127,7 +126,7 @@ class Board
       y     : type int , indique position verticale
       color : type str , indique la couleur
     */
-    setCase(body,x,y,color)
+    setCase(body,x,y,color, access)
     {
       // récupère une liste de tous les éléments body (il n'y en aura qu'un),
       // et sélectionne le premier (indice 0) de ces éléments
@@ -161,17 +160,25 @@ class Board
         for(let i =0; i< this._bodyElements.length; i++)
         {
             cellule = this._bodyElements[i];
-            if(cellule.getAttribute("x")==x && cellule.getAttribute("y")==y)
+            if(cellule.getAttribute("x")==x && cellule.getAttribute("y") == y)
             {
-              const align = "x = "+cellule.getAttribute("x")+" y = "+cellule.getAttribute("y");
-              //alert(align); // affiche la valeur de l'attribut align pour l'élément dont l'id="div1"
-              cellule.style.background = color;
+                if(cellule.getAttribute("available")== "false")
+                {
+                  return false;
+                }
+                else
+                {
+                  cellule.setAttribute("available",access);
+                  cellule.style.background = color;
+                }
+
+              }
            }
         }
 
       }
 
-    }
+
 
 
     // return une valeur aléatoire entre min et max
@@ -191,6 +198,60 @@ class Board
     {
         return this._yTableLength;
     }
+
+
+
+    isCaseAvailable(body,x,y)
+    {
+      // récupère une liste de tous les éléments body (il n'y en aura qu'un),
+      // et sélectionne le premier (indice 0) de ces éléments
+
+      try
+      {
+        this._body = body;
+      }
+      catch (e)
+      {
+        alert('no body created');
+        return false;
+      }
+
+      // à présent, trouve tous les éléments p enfants de cet élément body
+      try
+      {
+        this._bodyElements = this._body.getElementsByTagName("td");
+      }
+      catch (e)
+      {
+        alert('no table exists');
+      }
+
+
+      let cellule = this._bodyElements[0];
+
+      // recherche une case spécifique grâce à ses attributs x et y
+      if(cellule.hasAttribute)
+      {
+        for(let i =0; i< this._bodyElements.length; i++)
+        {
+            cellule = this._bodyElements[i];
+            if(cellule.getAttribute("x")==x && cellule.getAttribute("y") == y)
+            {
+                if(cellule.getAttribute("available")== "false")
+                {
+                  return false;
+                }
+                else
+                {
+                  return true;
+                }
+
+              }
+           }
+        }
+
+      }
+
 
 
 }

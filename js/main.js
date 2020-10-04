@@ -18,7 +18,7 @@ Board(bodyReference)
 // initialisation du plateau
 plateau = new Board(body);
 // générer les cases inaccessibles
-plateau.setBackground(body,color,nbCase);
+plateau.generateNoAvailableCases(body,color,nbCase);
 
 let actualX = 0;
 let actualY = 0;
@@ -26,57 +26,68 @@ plateau.setCase(body,actualX, actualY,"red");
 
 const log = document.getElementById('log');
 
-document.addEventListener('keypress', myFunction);
+document.addEventListener('keypress', move);
 
 
-function myFunction(event)
+function move(event)
 {
 
   var x = event.key;
-  console.log("The pressed key was: " + x);
-
+  //console.log("The pressed key was: " + x);
 
   if(x=='b')
   {
-    if(actualX + 1 < plateau.xTableLength)
+    if(actualX + 1 < plateau.xTableLength && plateau.isCaseAvailable(body, actualX+1, actualY) == true )
     {
-      plateau.setCase(body,actualX,actualY,"green");
-      actualX = actualX+1;
+
+        plateau.setCase(body,actualX,actualY,"green",true);
+        actualX = actualX+1;
+    }
+    else
+    {
+      alert('cellule non inaccessible');
     }
 
   }
   else if(x=='h')
   {
-
-
-    if( (actualX - 1) >= 0)
+    if( (actualX - 1) >= 0 && plateau.isCaseAvailable(body, actualX-1, actualY)== true)
     {
-      plateau.setCase(body,actualX,actualY,"green");
-      actualX = actualX-1;
+        plateau.setCase(body,actualX,actualY,"green",true)
+        actualX = actualX-1;
     }
+    else
+    {
+      alert('cellule non inaccessible');
+    }
+
 
   }
   else if(x=='g')
   {
-    if( (actualY - 1) >= 0)
+    if( (actualY - 1) >= 0 && plateau.isCaseAvailable(body, actualX, actualY-1) == true)
     {
-      plateau.setCase(body,actualX,actualY,"green");
+      plateau.setCase(body,actualX,actualY,"green",true);
       actualY = actualY-1;
     }
+    else
+    {
+      alert('cellule non inaccessible');
+    }
+
   }
   else if(x=='d')
   {
-    if(actualY + 1 < plateau.yTableLength)
+    if(actualY + 1 < plateau.yTableLength && plateau.isCaseAvailable(body, actualX, actualY+1) == true)
     {
-      plateau.setCase(body,actualX,actualY,"green");
+      plateau.setCase(body,actualX,actualY,"green",true);
       actualY = actualY+1;
     }
+    else
+    {
+      alert('cellule non inaccessible');
+    }
   }
-  else {
-
-  }
-
   plateau.setCase(body,actualX,actualY,"red");
-
 
 }
