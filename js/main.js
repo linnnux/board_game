@@ -1,3 +1,8 @@
+/*
+  Author : M.M.Nassim
+  e-mail : mmn@2mn.info
+  website: www.2mn.info
+*/
 //main
 
 // initialisation des paramètres

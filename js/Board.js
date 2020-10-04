@@ -8,6 +8,10 @@
     https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute
     https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute
     https://www.w3schools.com/jsref/met_element_getattribute.asp
+
+    Author : M.M.Nassim
+    e-mail : mmn@2mn.info
+    website: www.2mn.info
 */
 
 
