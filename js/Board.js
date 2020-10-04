@@ -22,7 +22,7 @@ class Board
       // taille tab max
       this._maxLenght    = 10;
       // taille tab min
-      this._minLenght    = 5;
+      this._minLenght    = 10;
 
       // longueur x tab
       this._xTableLength = 0;
