@@ -42,7 +42,7 @@ class Board
     {
       // creates a <table> element and a <tbody> element
       var tbl     = document.createElement("table");
-      tbl.setAttribute("class","w3-col w3-light-green w3-center");
+      tbl.setAttribute("class","w3-twothird w3-light-green w3-center");
       var tblBody = document.createElement("tbody");
 
       // générer les tailles du plateau entre le max et le minim défini

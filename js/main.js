@@ -22,17 +22,23 @@ Board(bodyReference)
 
 // initialisation du plateau
 plateau = new Board(body);
+player = new Player("nassim","blue");
 // générer les cases inaccessibles
 plateau.generateNoAvailableCases(body,"#CCC",nbCase);
 
 let actualX = 0;
 let actualY = 0;
-plateau.setCase(body,actualX, actualY,'red');
-
-const log = document.getElementById('log');
+plateau.setCase(body,actualX, actualY,player.color);
 
 document.addEventListener('keypress', move);
 
+
+
+
+
+
+//player.name="mohamed";
+player.present;
 
 function move(event)
 {
@@ -171,7 +177,7 @@ window.addEventListener("keydown", function (event) {
     default:
       return; // Quit when this doesn't handle the key event.
   }
-  plateau.setCase(body,actualX,actualY,"red");
+  plateau.setCase(body,actualX,actualY,player.color);
   // Cancel the default action to avoid it being handled twice
   event.preventDefault();
 }, true);
