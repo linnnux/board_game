@@ -36,14 +36,18 @@ class Board
       // générer un tableau (plateau)
       this.generateTable(body);
 
+      // générer les cases inaccessibles
+      this.generateNoAvailableCases(body);
     }
 
     generateTable(body)
     {
       // creates a <table> element and a <tbody> element
-      var tbl     = document.createElement("table");
+      let tbl     = document.createElement("table");
+      let tblBody = document.createElement("tbody");
+      
       tbl.setAttribute("class","w3-twothird w3-light-green w3-center");
-      var tblBody = document.createElement("tbody");
+
 
       // générer les tailles du plateau entre le max et le minim défini
       this._xTableLength = this.getRndInteger( this._minLenght,  this._maxLenght);
@@ -51,21 +55,20 @@ class Board
 
       // creating all cells
 
-      for (var i = 0; i < this._xTableLength; i++)
+      for (let i = 0; i < this._xTableLength; i++)
       {
 
         // creates a table row
-        var row = document.createElement("tr");
+        let row = document.createElement("tr");
 
-          for (var j = 0; j < this._yTableLength; j++)
+          for (let j = 0; j < this._yTableLength; j++)
           {
 
             // Create a <td> element and a text node, make the text
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
-            var cell = document.createElement("td");
-            var cellText = document.createTextNode("row "+i+", column "+j);
-            var cellText = document.createTextNode("row "+i+", column "+j);
+            let cell = document.createElement("td");
+            let cellText = document.createTextNode("row "+i+", column "+j);
             cell.setAttribute("x", i);
             cell.setAttribute("y", j);
             cell.setAttribute("available", true);
@@ -98,21 +101,18 @@ class Board
     /*
       Cette fonction génère les cases inaccessibles
     */
-    generateNoAvailableCases(body, color, nbCase)
+    generateNoAvailableCases(body)
     {
-      if (nbCase > this._xTableLength || nbCase > this._yTableLength)
-      {
-        nbcase = this._xTableLength;
-      }
-
+      this._nbCase = 5;//this.getRndInteger(5, this.xTableLength);
+      console.log(this._nbCase);
       try
       {
-        for(let i=0;i< nbCase; i++)
+        for(let i=0;i< this._nbCase; i++)
         {
           this._randomX = this.getRndInteger(0, this._xTableLength);
           this._randomY = this.getRndInteger(0, this._yTableLength);
 
-          this.setCase(body, this._randomX, this._randomY, color, false);
+          this.setCase(body, this._randomX, this._randomY, 'grey', false);
         }
       }
       catch (e)

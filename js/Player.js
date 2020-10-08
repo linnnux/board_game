@@ -52,24 +52,18 @@ class Player
                    score : this._score,
                    moves : this._nbMoves
                  };
-                 console.log(this._infos);
 
-    var key;
+    let key;
     for (key in this._infos )
     {
-      var li = document.createElement("li");
-      var node = document.createTextNode(key+' : '+this._infos[key])
-      li.appendChild(node);
+      let element = document.getElementById("playerInfos");
+      let li = document.createElement("li");
+      let node = document.createTextNode(key+' : '+this._infos[key]);
 
-      var element = document.getElementById("playerInfos");
+      li.appendChild(node);
       element.appendChild(li);
     }
 
-    /*
-    document.getElementById("player1Name").innerHTML = this._name;
-    document.getElementById("player1Score").innerHTML = this._score;
-    document.getElementById("player1NbMoves").innerHTML = this._score;
-    */
   }
 
 }

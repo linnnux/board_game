@@ -10,8 +10,6 @@
 // get the reference for the body
 var body = document.getElementsByTagName("body")[0];
 
-// nombre max de case inaccéssibles à génrer
-let nbCase = 5;
 
 // couleur de case
 let color = '8bc34a';
@@ -23,13 +21,11 @@ Board(bodyReference)
 // initialisation du plateau
 plateau = new Board(body);
 player = new Player("nassim","blue");
-// générer les cases inaccessibles
-plateau.generateNoAvailableCases(body,"#CCC",nbCase);
+
 
 let actualX = 0;
 let actualY = 0;
 plateau.setCase(body,actualX, actualY,player.color);
-
 document.addEventListener('keypress', move);
 
 
